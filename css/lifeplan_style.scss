@@ -1,0 +1,300 @@
+$header_color: RGB(96, 192, 96);
+$back_color: RGB(228, 244, 224);
+
+$main_color: RGB(240, 255, 224);
+$text_color: RGB(80, 80, 80);
+$border_color: RGB(128, 128, 128);
+$text_color_completed: RGB(160, 160, 160);
+$border_color_completed: RGB(192, 192, 192);
+
+$little-lighter: rgba(255, 255, 255, 0.2);
+$more-lighter: rgba(255, 255, 255, 0.5);
+
+html, body, {
+  height: 100%;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+.header {
+  padding: 0;
+  background-color: $header_color;
+  display: table;
+  width: 100%;
+  color: white;
+
+  .buttonsContainer {
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+    text-align: right;
+  }
+
+  #logo {
+    height: 5.0rem;
+    position: relative;
+    margin-left: -0.5rem;
+  }
+
+  .btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    line-height: 0.6;
+    transition: text-shadow 0.5s ease-out;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:hover{
+      text-shadow: $header-color 0 0 2px,
+                   white 0 0 6px,
+                   white 0 0 12px;
+    }
+
+    span {
+      color: white;
+      display: block;
+      padding: 0.75rem;
+      margin-right: 0;
+    }
+  }
+
+  a {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    line-height: 0.6;
+
+    span {
+      color: white;
+      display: block;
+      padding: 0.75rem;
+      margin-right: 0;
+    }
+  }
+}
+
+.listsContainer {
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+
+  #taskForm {
+    background-color: $back_color;
+
+    input {
+      border-color: $border_color;
+      padding: 0.75rem 1.25rem;
+
+      &:focus {
+        box-shadow: 0 0 0 .25rem rgba(96, 192, 96, .25);
+      }
+    }
+
+    .btn-primary {
+      background-color: $header_color;
+      border-color: $border_color;
+      font-size: 1.5rem;
+      font-weight: 700;
+
+      &:focus {
+        box-shadow: 0 0 0 .25rem rgba(96, 192, 96, .25);
+      }
+    }
+  }
+
+  #list, #listCompleted {
+    width: 100%;
+    left: 0;
+    position: absolute;
+    background-color: $back_color;
+
+    .taskItem {
+      background-color: $main_color;
+      color: $text_color;
+      border-color: $border_color;
+      text-align: left;
+      padding: 0;
+
+      &.checked {
+        background-color: transparent;
+        color: $text_color_completed;
+        border-color: $border_color_completed;
+        text-decoration: line-through;
+
+        .filterTaskByCategory {
+          color: $back_color;
+          background-color: $border_color_completed;
+        }
+      }
+
+      .filterTaskByCategory {
+        padding: 0;
+        margin-right: 0.75rem;
+        margin-bottom: 0;
+        border: none;
+        border-radius: 0.1875rem 0;
+        color: $main_color;
+        float: left;
+
+        &:focus {
+          outline: none;
+        }
+
+        span {
+          display: block;
+          padding: 0.75rem;
+          margin-right: 0;
+
+        }
+      }
+
+      p {
+        margin: 0;
+        padding: 0.75rem;
+      }
+
+      .deleteTask {
+        position: static;
+        padding: 0;
+        line-height: 0.6;
+        float: right;
+
+        &:focus {
+          outline: none;
+        }
+
+        span {
+          padding: 1rem 0.7rem;
+          margin-bottom: -1.0rem;
+          border: none;
+          border-radius: 0 0.1875rem;
+
+        }
+      }
+    }
+
+    .unvisible {
+      display: none;
+    }
+  }
+
+  #listCompleted {
+    width: 100%;
+    position: absolute;
+    left: -100%;
+    z-index: 1;
+    transition: left 0.5s ease-out;
+
+    &.norm {
+      left: 0;
+    }
+  }
+}
+
+.modal {
+  .modal-content {
+    .modal-header {
+      background-color: $header_color;
+      color: white;
+      padding: 0.625rem 0.5rem 0.625rem 1rem;
+      border-color: $header_color;
+
+      .close {
+        color: white;
+        position: static;
+        margin: 0;
+        padding: 0;
+        line-height: 0.6;
+        float: right;
+
+        &:focus {
+          outline: none;
+        }
+
+        span {
+          padding: 0.375rem 0.5rem;
+          border: none;
+          border-radius: 0 0.1875rem;
+          opacity: 1.0;
+          text-shadow: none;
+        }
+      }
+    }
+
+    .modal-body {
+      background-color: $back-color;
+
+      input {
+        background-color: $more-lighter;
+        color: $text_color;
+        border-color: $header_color;
+
+        &:focus {
+          background-color: white;
+          box-shadow: 0 0 0 .25rem rgba(96, 192, 96, .25);
+        }
+      }
+
+      .form-text {
+        color: $text_color;
+      }
+
+      .error {
+        background-color: lightyellow;
+      }
+    }
+
+    .modal-footer {
+      background-color: $back-color;
+      border-color: $header_color;
+
+      .btn-secondary {
+
+        &:focus {
+          box-shadow: 0 0 0 .25rem rgba(108, 117, 125, .25);
+        }
+      }
+
+      .btn-primary {
+        background-color: $header_color;
+        border-color: $header_color;
+
+        &:focus {
+          box-shadow: 0 0 0 .25rem rgba(96, 192, 96, .25);
+        }
+      }
+    }
+  }
+}
+
+
+div.alert.alert-warning.mb-1 {
+  border-color: RGB(128, 128, 128);
+  animation-name: fadeOut;
+  animation-duration: 3s;
+  animation-delay: 5s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+    padding: 0.75rem 1.25rem
+  }
+  100% {
+    opacity: 0;
+    padding: 0;
+    height: 0;
+    border: 0;
+  }
+}
